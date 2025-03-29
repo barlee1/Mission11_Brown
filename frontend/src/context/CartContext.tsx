@@ -7,7 +7,6 @@ interface CartContextType {
   removeFromCart: (projectId: number) => void;
   clearCart: () => void;
 }
-
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -16,16 +15,38 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((c) => c.bookId === item.bookId);
-      const updatedCart = prevCart.map((c) =>
-        c.bookId === item.bookId ? { ...c, price: c.price + item.price } : c
-      );
 
-      return existingItem ? updatedCart : [...prevCart, item];
+      if (existingItem) {
+        return prevCart.map((c) =>
+          c.bookId === item.bookId
+            ? {
+                ...c,
+                quantity: c.quantity + 1,
+                subtotal: (c.quantity + 1) * c.price, // Update subtotal
+              }
+            : c
+        );
+      } else {
+        return [...prevCart, { ...item, quantity: 1, subtotal: item.price }];
+      }
     });
   };
 
   const removeFromCart = (bookId: number) => {
-    setCart((prevCart) => prevCart.filter((c) => c.bookId !== bookId));
+    setCart(
+      (prevCart) =>
+        prevCart
+          .map((c) =>
+            c.bookId === bookId
+              ? {
+                  ...c,
+                  quantity: c.quantity - 1,
+                  subtotal: (c.quantity - 1) * c.price,
+                }
+              : c
+          )
+          .filter((c) => c.quantity > 0) // Remove item if quantity is 0
+    );
   };
 
   const clearCart = () => {

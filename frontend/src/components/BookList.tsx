@@ -19,6 +19,7 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
       const categoryParams = selectedCategories
         .map((cat) => `bookTypes=${encodeURIComponent(cat)}`)
         .join(`&`);
+
       const response = await fetch(
         `https://localhost:5000/Book/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ""}`
       );

@@ -7,18 +7,34 @@ function CartPage() {
   const { cart, removeFromCart } = useCart();
 
   return (
-    <>
-      <div>
-        <h2>Your Cart</h2>
-        <div>
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-8">
+          <h2 className="mb-4">Your Cart</h2>
           {cart.length === 0 ? (
-            <p>Your cart is empty.</p>
+            <div className="alert alert-warning text-center">
+              Your cart is empty.
+            </div>
           ) : (
-            <ul>
+            <ul className="list-group">
               {cart.map((item: CartItem) => (
-                <li key={item.bookId}>
-                  {item.title} : ${item.price}
-                  <button onClick={() => removeFromCart(item.projectId)}>
+                <li
+                  key={item.bookId}
+                  className="3 d-flex justify-content-between align-items-center"
+                >
+                  <span>
+                    <strong>{item.title}</strong> - ${item.price.toFixed(2)}{" "}
+                    each
+                    <br />
+                    <span>Quantity: {item.quantity}</span>
+                    <br />
+                    <span>Subtotal: ${item.subtotal.toFixed(2)}</span>
+                  </span>
+
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => removeFromCart(item.bookId)}
+                  >
                     Remove
                   </button>
                 </li>
@@ -26,11 +42,24 @@ function CartPage() {
             </ul>
           )}
         </div>
-        <h3>Total: </h3>
-        <button>Checkout</button>
-        <button onClick={() => navigate("/")}>Continue Browsing</button>
+
+        <div className="col-md-4">
+          <div className="card p-3 shadow-sm">
+            <h3 className="text-center">
+              Total: $
+              {cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
+            </h3>
+            <button className="btn btn-primary w-100 my-2">Checkout</button>
+            <button
+              className="btn btn-secondary w-100"
+              onClick={() => navigate("/")}
+            >
+              Continue Browsing
+            </button>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

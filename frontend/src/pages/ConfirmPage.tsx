@@ -13,6 +13,8 @@ function ConfirmPage() {
       bookId: Number(bookId),
       title: title || "No Book Found",
       price: Number(price),
+      subtotal: Number(price),
+      quantity: Number(price),
     };
 
     addToCart(newItem);

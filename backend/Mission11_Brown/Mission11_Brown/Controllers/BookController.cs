@@ -17,14 +17,21 @@ namespace Mission11_Brown.API.Controllers
         }
 
         [HttpGet("AllBooks")]
-        public IActionResult GetAllBooks(int pageSize = 5, int pageNum = 2 )
+        public IActionResult GetAllBooks(int pageSize = 5, int pageNum = 2, [FromQuery] List<string>? bookTypes = null )
         {
-            var bookList = _BookDbContext.Books
+            IQueryable<Book> query = _BookDbContext.Books.AsQueryable();
+            
+            if (bookTypes != null && bookTypes.Any())
+            {
+                query = query.Where(b => bookTypes.Contains(b.Category));
+            }
+            
+            var totalNumBooks = query.Count();
+            
+            var bookList = query
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
-            
-            var totalNumBooks = _BookDbContext.Books.Count();
 
             var returnObject = new
             {
