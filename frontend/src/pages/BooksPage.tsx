@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CategoryFilter from "../components/CategoryFilter";
 import BookList from "../components/BookList";
 import Logo from "../components/Logo";
+import CartSummary from "../components/CartSummary";
 
 function BooksPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -10,7 +11,9 @@ function BooksPage() {
     <>
       <Logo />
       <div className="container mt-4">
-        <div></div>
+        <div>
+          <CartSummary />
+        </div>
         <div className="row">
           <div className="col-md-3">
             <CategoryFilter

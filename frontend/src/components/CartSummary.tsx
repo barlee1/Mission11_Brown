@@ -25,7 +25,7 @@ const CartSummary = () => {
       }}
       onClick={() => navigate("/cart")}
     >
-      <strong>${totalAmount}</strong>
+      <strong>🛒 ${totalAmount}</strong>
     </div>
   );
 };
