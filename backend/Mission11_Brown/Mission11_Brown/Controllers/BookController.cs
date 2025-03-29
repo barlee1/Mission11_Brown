@@ -35,5 +35,16 @@ namespace Mission11_Brown.API.Controllers
             return Ok(returnObject);
             return Ok(bookList);
         }
+
+        [HttpGet("GetBookTypes")]
+        public IActionResult GetProjectTypes()
+        {
+            var bookTypes = _BookDbContext.Books
+                .Select(b => b.Category)
+                .Distinct()
+                .ToList();
+            
+            return Ok(bookTypes);
+        }
     }
 }

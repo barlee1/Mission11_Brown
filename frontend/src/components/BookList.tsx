@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Book } from "./types/Book";
+import { Book } from "../types/Book";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./BookList.css";
 
-function BookList() {
+function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   const [books, setBooks] = useState<Book[]>([]);
   // how many entries per page
   const [pageSize, setPageSize] = useState<number>(5);
@@ -10,11 +12,15 @@ function BookList() {
   const [pageNum, setPageNum] = useState<number>(1);
   // how many total pages are needed
   const [totalPages, setTotalPages] = useState<number>(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
+      const categoryParams = selectedCategories
+        .map((cat) => `bookTypes=${encodeURIComponent(cat)}`)
+        .join(`&`);
       const response = await fetch(
-        `https://localhost:5000/Book/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}`
+        `https://localhost:5000/Book/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ""}`
       );
 
       const data = await response.json();
@@ -25,16 +31,10 @@ function BookList() {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     fetchBooks();
-  }, [pageSize, pageNum]);
+  }, [pageSize, pageNum, selectedCategories]);
 
   return (
     <>
-      <img
-        className="logo"
-        src="/img/next-chapter-co.png"
-        alt="Next Chapter Co"
-      ></img>
-      <br />
       <div className="card-container">
         {books.map((b) => (
           <div className="card" key={b.bookId}>
@@ -56,7 +56,7 @@ function BookList() {
                 </li>
                 <li>
                   <strong>Classification/Category: </strong>
-                  {b.category} / {b.classification}
+                  {b.classification} / {b.category}
                 </li>
                 <li>
                   <strong>Number of Pages: </strong>
@@ -66,6 +66,16 @@ function BookList() {
                   <strong>Price: </strong>${b.price}
                 </li>
               </ul>
+              <button
+                onClick={() =>
+                  navigate(
+                    `/Confirm/${encodeURIComponent(b.title)}/${b.price}/${b.bookId}/${b.images}`
+                  )
+                }
+                className="buy-button"
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         ))}
