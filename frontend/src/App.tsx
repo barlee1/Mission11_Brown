@@ -5,6 +5,7 @@ import BooksPage from "./pages/BooksPage"; // Make sure the import matches the c
 import ConfirmPage from "./pages/ConfirmPage";
 import CartPage from "./pages/CartPage";
 import { CartProvider } from "./context/CartContext";
+import AdminBooksPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             element={<ConfirmPage />}
           ></Route>
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/admin" element={<AdminBooksPage />} />
         </Routes>
       </Router>
     </CartProvider>
