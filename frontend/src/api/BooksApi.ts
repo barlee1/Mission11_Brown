@@ -50,3 +50,40 @@ export const addBook = async (newBook: Book): Promise<Book> => {
     throw error;
   }
 };
+
+// updating a book
+export const updateBook = async (
+  bookId: number,
+  updateBook: Book
+): Promise<Book> => {
+  try {
+    const response = await fetch(`${API_URL}/UpdateBook/${bookId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateBook),
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating book:", error);
+    throw error;
+  }
+};
+
+// to delete book
+export const deleteBook = async (bookId: number): Promise<void> => {
+  try {
+    const response = await fetch(`${API_URL}/DeleteBook/${bookId}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete book");
+    }
+  } catch (error) {
+    console.error("Error deleting book:", error);
+    throw error;
+  }
+};

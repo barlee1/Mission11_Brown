@@ -86,7 +86,7 @@ namespace Mission11_Brown.Controllers
         {
             var book = _bookDbContext.Books.Find(bookId);
 
-            if (book != null)
+            if (book == null)
             {
                 return NotFound(new {message = "Book not found"});
             }
