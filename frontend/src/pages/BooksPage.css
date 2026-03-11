@@ -1,0 +1,26 @@
+.books-page {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  padding: 1.5rem 2rem 2rem;
+}
+
+.books-page-sidebar {
+  align-self: flex-start;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.books-page-content {
+  align-self: stretch;
+}
+
+@media (max-width: 900px) {
+  .books-page {
+    grid-template-columns: 1fr;
+  }
+}
+

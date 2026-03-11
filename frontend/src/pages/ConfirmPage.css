@@ -1,0 +1,78 @@
+.confirm-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.confirm-card {
+  width: 100%;
+  max-width: 520px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem 1.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.confirm-title {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+.confirm-image-wrapper {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.confirm-image {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.confirm-price {
+  margin: 0.75rem 0 0.75rem;
+  font-weight: 600;
+}
+
+.confirm-details {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.confirm-details li {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.confirm-secondary-button {
+  background-color: #ffffff;
+  color: #bc7c7b;
+  border: 1px solid #bc7c7b;
+}
+
+.confirm-secondary-button:hover {
+  background-color: #fbe9ea;
+}
+
+@media (max-width: 600px) {
+  .confirm-card {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .confirm-image {
+    max-height: 320px;
+  }
+}
+

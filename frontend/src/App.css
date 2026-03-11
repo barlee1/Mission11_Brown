@@ -1,91 +1,11 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    width: 45%; /* Two cards per row on smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    width: 100%; /* One card per row on very small screens */
-  }
-}
-
-.card {
-  background-color: #fff;
-  border: 5px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  max-width: 400px;
-  min-height: 300px;
-  margin: 20px;
-  transition: transform 0.3s ease-in-out;
-  justify-content: center; /* Vertically center text */
-  align-items: center; /* Horizontally center text */
-  text-align: center; /* Center text inside the card */
-  padding: 15px;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-.read-the-docs {
-  color: #888;
-}
-
-.card li {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-.card ul {
-  list-style-type: none; /* Removes bullet points */
-  padding: 0; /* Removes default padding */
-}
-
-img {
-  width: 200px; /* Set the width of the image */
-  height: 300px; /* Set the height of the image */
-  object-fit: cover; /* Ensures the image covers the container without distortion */
-}
-
-.logo {
-  width: 300px;
-  height: 200px;
+  height: 56px;
+  width: auto;
 }
