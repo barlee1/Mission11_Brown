@@ -5,14 +5,13 @@ interface FetchBooksResponse {
   totalNumBooks: number;
 }
 
-const API_URL =
-  "https://mission13-brown-backend-gjgcb7abhze5btcp.eastus-01.azurewebsites.net/book";
+const API_URL = "https://localhost:5000/Book";
 
 // collecting every book
 export const fetchBooks = async (
   pageSize: number,
   pageNum: number,
-  selectedCategories: string[]
+  selectedCategories: string[],
 ): Promise<FetchBooksResponse> => {
   try {
     const categoryParams = selectedCategories
@@ -22,7 +21,7 @@ export const fetchBooks = async (
     const response = await fetch(
       `${API_URL}/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}${
         selectedCategories.length ? `&${categoryParams}` : ""
-      }`
+      }`,
     );
     return await response.json();
   } catch (error) {
@@ -55,7 +54,7 @@ export const addBook = async (newBook: Book): Promise<Book> => {
 // updating a book
 export const updateBook = async (
   bookId: number,
-  updateBook: Book
+  updateBook: Book,
 ): Promise<Book> => {
   try {
     const response = await fetch(`${API_URL}/UpdateBook/${bookId}`, {

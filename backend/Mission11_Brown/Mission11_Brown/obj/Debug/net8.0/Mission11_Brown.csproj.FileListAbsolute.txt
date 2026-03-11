@@ -132,3 +132,9 @@
 /Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/obj/Debug/net8.0/Mission11_Brown.genruntimeconfig.cache
 /Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/obj/Debug/net8.0/ref/Mission11_Brown.dll
 /Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/obj/Debug/net8.0/Mission11_Brown.sourcelink.json
+/Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/bin/Debug/net8.0/publish/web.config
+/Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/bin/Debug/net8.0/publish/appsettings.Development.json
+/Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/bin/Debug/net8.0/publish/appsettings.json
+/Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/bin/Debug/net8.0/publish/Mission11_Brown.deps.json
+/Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/bin/Debug/net8.0/publish/Mission11_Brown.runtimeconfig.json
+/Users/kyleebrown/RiderProjects/Mission11_Brown/backend/Mission11_Brown/Mission11_Brown/bin/Debug/net8.0/Bookstore.sqlite
