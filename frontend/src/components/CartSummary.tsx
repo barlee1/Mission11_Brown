@@ -6,12 +6,13 @@ const CartSummary = () => {
   const { cart } = useCart();
 
   const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+  const formattedTotal = totalAmount.toFixed(2);
 
   return (
     <button
       type="button"
       onClick={() => navigate("/cart")}
-      aria-label={`View cart, total $${totalAmount}`}
+      aria-label={`View cart, total $${formattedTotal}`}
       style={{
         backgroundColor: "#ffffff",
         color: "#bc7c7b",
@@ -27,7 +28,7 @@ const CartSummary = () => {
       <span role="img" aria-hidden="true">
         🛒
       </span>
-      <span>${totalAmount.toFixed(2)}</span>
+      <span>${formattedTotal}</span>
     </button>
   );
 };

@@ -9,14 +9,14 @@ import { fetchBooks } from "../api/BooksApi";
 function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   const [books, setBooks] = useState<Book[]>([]);
   // how many entries per page
-  const [pageSize, setPageSize] = useState<number>(5);
+  const [pageSize, setPageSize] = useState<number>(10);
   // how many pages total
   const [pageNum, setPageNum] = useState<number>(1);
   // how many total pages are needed
   const [totalPages, setTotalPages] = useState<number>(0);
   const navigate = useNavigate();
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [, setError] = useState<string | null>(null);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     const loadBooks = async () => {
@@ -42,28 +42,17 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
         {books.map((b) => (
           <div className="card" key={b.bookId}>
             <h3>{b.title}</h3>
-            <div>
+            <div className="card-content">
               <ul>
                 <li>
-                  <img src={`./img/${b.images}`} alt={b.images} />
+                  <img
+                    className="book-cover"
+                    src={`./img/${b.images}`}
+                    alt={b.title}
+                  />
                 </li>
                 <li>
                   <strong>Author: </strong> {b.author}
-                </li>
-                <li>
-                  <strong>Publisher: </strong> {b.publisher}
-                </li>
-                <li>
-                  <strong>ISBN: </strong>
-                  {b.isbn}
-                </li>
-                <li>
-                  <strong>Classification/Category: </strong>
-                  {b.classification} / {b.category}
-                </li>
-                <li>
-                  <strong>Number of Pages: </strong>
-                  {b.pageCount}
                 </li>
                 <li>
                   <strong>Price: </strong>${b.price}
@@ -72,7 +61,8 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
               <button
                 onClick={() =>
                   navigate(
-                    `/Confirm/${encodeURIComponent(b.title)}/${b.price}/${b.bookId}/${b.images}`
+                    `/Confirm/${encodeURIComponent(b.title)}/${b.price}/${b.bookId}/${b.images}`,
+                    { state: { book: b } }
                   )
                 }
                 className="buy-button"

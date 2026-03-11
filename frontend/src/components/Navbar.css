@@ -33,10 +33,12 @@
 .navbar-link {
   color: #ffeef0;
   font-size: 0.95rem;
+  text-decoration: none;
 }
 
 .navbar-link:hover {
   color: #ffffff;
+  text-decoration: none;
 }
 
 .navbar-right {
