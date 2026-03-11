@@ -5,28 +5,30 @@ const CartSummary = () => {
   const navigate = useNavigate();
   const { cart } = useCart();
 
-  // Ensure cart is defined before using reduce
   const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <div
+    <button
+      type="button"
+      onClick={() => navigate("/cart")}
+      aria-label={`View cart, total $${totalAmount}`}
       style={{
-        position: "fixed",
-        top: "10px",
-        right: "20px",
-        background: "#f8f9fa",
-        padding: "10px 15px",
-        borderRadius: "8px",
-        cursor: "pointer",
+        backgroundColor: "#ffffff",
+        color: "#bc7c7b",
+        borderRadius: "999px",
+        padding: "0.35rem 0.9rem",
+        fontSize: "0.9rem",
         display: "flex",
         alignItems: "center",
-        boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
-        fontSize: "16px",
+        gap: "0.4rem",
+        border: "none",
       }}
-      onClick={() => navigate("/cart")}
     >
-      <strong>🛒 ${totalAmount}</strong>
-    </div>
+      <span role="img" aria-hidden="true">
+        🛒
+      </span>
+      <span>${totalAmount.toFixed(2)}</span>
+    </button>
   );
 };
 
